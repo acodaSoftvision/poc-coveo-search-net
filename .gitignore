@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/poc-coveo-search/.vs/poc-coveo-search/v16
+/poc-coveo-search/obj
+/poc-coveo-search/bin
