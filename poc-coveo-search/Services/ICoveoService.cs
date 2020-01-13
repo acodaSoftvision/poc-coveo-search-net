@@ -1,9 +1,10 @@
 ﻿using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace poc_coveo_search.Services
 {
     public interface ICoveoService
     {
-        HttpResponseMessage Search(string filter);
+        Task<string> Search(string filter);
     }
 }

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -13,11 +11,6 @@ namespace poc_coveo_search.Controllers
     [Route("[controller]")]
     public class CoveoController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
         private readonly ILogger<CoveoController> _logger;
         private readonly ICoveoService _coveoService;
 
@@ -27,13 +20,14 @@ namespace poc_coveo_search.Controllers
             _coveoService = coveoService;
         }
 
-        [HttpGet("/coveo")]
-        public ActionResult<string> Get(string filter)
+        [HttpGet]
+        public async Task<ActionResult<string>> Get(string filter)
         {
             try
             {
-                var response = _coveoService.Search(filter);
-                return this.StatusCode((int)HttpStatusCode.Created, "Ok!");
+                var response = await _coveoService.Search(filter);
+
+                return this.StatusCode((int)HttpStatusCode.OK, response);
             }
             catch (Exception ex)
             {
