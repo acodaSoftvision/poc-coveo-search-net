@@ -39,11 +39,13 @@ namespace poc_coveo_search.Controllers
 
         [HttpGet]
         [Route("advancedquery")]
-        public async Task<ActionResult<string>> AdvancedQuery(AdvancedQueryModel queryModel)
+        public async Task<ActionResult<string>> AdvancedQuery([FromQuery]AdvancedQueryModel queryModel)
         {
             try
             {
-                return this.StatusCode((int)HttpStatusCode.OK);
+                var response = await _coveoService.AdvancedQuery(queryModel);
+
+                return this.StatusCode((int)HttpStatusCode.OK, response);
             }
             catch (Exception ex)
             {

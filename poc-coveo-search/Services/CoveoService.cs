@@ -10,11 +10,15 @@ namespace poc_coveo_search.Services
         private readonly string TOKEN = "xx99c21a86-6f53-4d44-9840-8c7be5fcb0f4";
         private readonly string URI = "https://platform.cloud.coveo.com/rest/search/v2?organizationId=aocodasv2d2vjnv7/";
 
-        public Task<string> AdvancedQuery(AdvancedQueryModel queryModel)
+        public async Task<string> AdvancedQuery(AdvancedQueryModel queryModel)
         {
-            //var httpclient = this.ConfigureHttpClient();
+            var advancedQuery = new
+            {
+                q = queryModel.Q,
+                aq = queryModel.AQ
+            };
 
-            throw new System.NotImplementedException();
+            return await this.PerformQuery(advancedQuery);
         }
 
         public async Task<string> SimpleQuery(string q)
