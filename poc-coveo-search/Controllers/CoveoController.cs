@@ -3,6 +3,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using poc_coveo_search.Models;
 using poc_coveo_search.Services;
 
 namespace poc_coveo_search.Controllers
@@ -21,13 +22,28 @@ namespace poc_coveo_search.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<string>> Get(string filter)
+        [Route("simplequery")]
+        public async Task<ActionResult<string>> SimpleQuery(string q)
         {
             try
             {
-                var response = await _coveoService.Search(filter);
+                var response = await _coveoService.SimpleQuery(q);
 
                 return this.StatusCode((int)HttpStatusCode.OK, response);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("advancedquery")]
+        public async Task<ActionResult<string>> AdvancedQuery(AdvancedQueryModel queryModel)
+        {
+            try
+            {
+                return this.StatusCode((int)HttpStatusCode.OK);
             }
             catch (Exception ex)
             {
