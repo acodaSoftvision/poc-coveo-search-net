@@ -52,5 +52,21 @@ namespace poc_coveo_search.Controllers
                 return this.StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
             }
         }
+
+        [HttpPost]
+        [Route("customquery")]
+        public async Task<ActionResult<string>> CustomQuery([FromBody]CustomQueryModel queryModel)
+        {
+            try
+            {
+                var response = await _coveoService.CustomQuery(queryModel);
+
+                return this.StatusCode((int)HttpStatusCode.OK, response);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode((int)HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
     }
 }

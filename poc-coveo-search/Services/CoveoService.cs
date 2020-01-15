@@ -21,6 +21,11 @@ namespace poc_coveo_search.Services
             return await this.PerformQuery(advancedQuery);
         }
 
+        public async Task<string> CustomQuery(CustomQueryModel queryModel)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public async Task<string> SimpleQuery(string q)
         {
             var simpleQuery = new

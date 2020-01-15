@@ -16,7 +16,14 @@ namespace poc_coveo_search.Services
         /// Performs an advanced query for further filter to items collection that matches the keyword.
         /// </summary>
         /// <param name="queryModel">Model that represents the fields necessaries for performing an advanced query</param>
-        /// <returns>The collection of items that matches with the keyword with the conditions.</returns>
+        /// <returns>The collection of items that matches with the keyword and with the advanced query conditions.</returns>
         Task<string> AdvancedQuery(AdvancedQueryModel queryModel);
+
+        /// <summary>
+        /// Performs a custom query where you can configure uncommon coveo filters.
+        /// </summary>
+        /// <param name="queryModel">Model that represents the fields necessaries for performing a custom query</param>
+        /// <returns>The collection of items that matches with the conditions.</returns>
+        Task<string> CustomQuery(CustomQueryModel queryModel);
     }
 }
