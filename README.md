@@ -5,8 +5,8 @@ You also need to save your API Key as explained at documentation linked before. 
 
 Request template
 
-URI = https://platform.cloud.coveo.com/rest/search/v2?organizationId=<MyOrganizationId>
-TOKEN = <MyAccessToken>
+URI = https://platform.cloud.coveo.com/rest/search/v2?organizationId=[MyOrganizationId]
+TOKEN = [MyAccessToken]
 
 Then you are ready to rebuild the application so it restores NuGet Packages and then run application (Set startup to poc-coveo-search). It will launch a Swagger UI.
 
