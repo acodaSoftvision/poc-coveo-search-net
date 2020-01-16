@@ -8,7 +8,9 @@ Request template
 URI = https://platform.cloud.coveo.com/rest/search/v2?organizationId=[MyOrganizationId]
 TOKEN = [MyAccessToken]
 
-Then you are ready to rebuild the application so it restores NuGet Packages and then run application (Set startup to poc-coveo-search). It will launch a Swagger UI.
+Then you are ready to rebuild the application so it restores NuGet Packages and run the application (Set startup to poc-coveo-search). It will launch a Swagger UI.
 
 For further experimentation there is a page where other query conditions that the Search API admit, here is the page: 
-https://docs.coveo.com/en/1461/cloud-v2-developers/query-parameters
+https://docs.coveo.com/en/1461/cloud-v2-developers/query-parameters. In this first version the only parameters implemented are Q and AQ.
+
+Version: 1.0
